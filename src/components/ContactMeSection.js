@@ -20,15 +20,15 @@ import {useAlertContext} from "../context/alertContext";
 const ContactMeSection = () => {
   const { isLoading, response, submit } = useSubmit();
   const { onOpen } = useAlertContext();
-  
-  const formik = useFormik({ 
+
+  const formik = useFormik({
     initialValues: {
     firstName: '', email: '', type: 'hireMe'
     , comment: '',
   },
     onSubmit: (values) => {
       submit('https://john.com/contactme', values);
-    }, 
+    },
 
     validationSchema: Yup.object({
       firstName: Yup.string().required('Required'),
@@ -37,14 +37,14 @@ const ContactMeSection = () => {
     }),
   });
 
-  useEffect(() => { 
-    if (response) { 
-      onOpen(response.type, response.message); 
-      if (response.type === 'success') { 
-        formik.resetForm(); 
-      } 
-    } 
-  }, [response]); 
+  useEffect(() => {
+    if (response) {
+      onOpen(response.type, response.message);
+      if (response.type === 'success') {
+        formik.resetForm();
+      }
+    }
+  }, [response]);
 
   return (
     <FullScreenSection
@@ -53,15 +53,15 @@ const ContactMeSection = () => {
       py={16}
       spacing={8}
     >
-      <VStack w="1024px" p={32} alignItems="flex-start">
+      <VStack w="100vw" p={[10, 20, 32]} alignItems="flex-start">
         <Heading as="h1" id="contactme-section">
           Contact me
         </Heading>
-        <Box p={6} rounded="md" w="100%">
+        <Box p={6} rounded="md" w="100%" >
           <form onSubmit={formik.handleSubmit}>
             <VStack spacing={4}>
               <FormControl isRequired isInvalid={!!formik.errors.firstName && formik.touched.firstName}>
-              
+
                 <FormLabel htmlFor="firstName">Name</FormLabel>
                 <Input
                   id="firstName"
@@ -82,7 +82,7 @@ const ContactMeSection = () => {
               </FormControl>
               <FormControl>
                 <FormLabel htmlFor="type">Type of enquiry</FormLabel>
-                <Select id="type" 
+                <Select id="type"
                 name="type"
                 {...formik.getFieldProps('type')} >
                   <option value="hireMe">Freelance project proposal</option>
@@ -111,9 +111,8 @@ const ContactMeSection = () => {
         </Box>
       </VStack>
     </FullScreenSection>
-    
   );
-}; 
-  
+};
+
 
 export default ContactMeSection;
