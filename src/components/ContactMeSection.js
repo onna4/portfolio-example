@@ -53,8 +53,8 @@ const ContactMeSection = () => {
       py={16}
       spacing={8}
     >
-      <VStack w="100vw" p={[10, 20, 32]} alignItems="flex-start">
-        <Heading as="h1" id="contactme-section">
+      <VStack w="100vw" maxW="1100px" p={[10, 20, 32]} alignItems="center">
+        <Heading as="h1" id="contactme-section" alignSelf="flex-start" >
           Contact me
         </Heading>
         <Box p={6} rounded="md" w="100%" >
